@@ -95,6 +95,7 @@ class _HomeState extends State<Home> {
           icon: Icon(Icons.logout_rounded, color: Color(0xFFFFD369)),
           onPressed: () async {
             await FirebaseAuth.instance.signOut();
+            Get.toNamed(RouteName.login);
           },
         ),
         title: Text(
