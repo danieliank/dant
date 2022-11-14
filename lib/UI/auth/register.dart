@@ -1,5 +1,3 @@
-import 'package:dant/UI/pages/home.dart';
-import 'package:dant/UI/auth/login.dart';
 import 'package:dant/routes/route_names.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

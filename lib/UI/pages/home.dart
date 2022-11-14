@@ -2,8 +2,6 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dant/routes/route_names.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -55,7 +53,7 @@ class _HomeState extends State<Home> {
                 ),
                 ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: Color(0xFFFFD369)),
+                      backgroundColor: const Color(0xFFFFD369)),
                   child: const Text(
                     'Update',
                     style: TextStyle(
@@ -65,12 +63,14 @@ class _HomeState extends State<Home> {
                   onPressed: () async {
                     final String title = _titleController.text;
                     final String desc = _descController.text;
+                    // ignore: unnecessary_null_comparison
                     if (desc != null) {
                       await task
                           .doc(documentSnapshot!.id)
                           .update({"title": title, "desc": desc});
                       _titleController.text = '';
                       _descController.text = '';
+                      // ignore: use_build_context_synchronously
                       Navigator.of(context).pop();
                     }
                   },
@@ -90,9 +90,9 @@ class _HomeState extends State<Home> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        backgroundColor: Color(0xFF222831),
+        backgroundColor: const Color(0xFF222831),
         leading: IconButton(
-          icon: Icon(Icons.logout_rounded, color: Color(0xFFFFD369)),
+          icon: const Icon(Icons.logout_rounded, color: Color(0xFFFFD369)),
           onPressed: () async {
             await FirebaseAuth.instance.signOut();
             Get.toNamed(RouteName.login);
@@ -101,7 +101,7 @@ class _HomeState extends State<Home> {
         title: Text(
           "Dant",
           style: GoogleFonts.poppins(
-            color: Color(0xFFFFD369),
+            color: const Color(0xFFFFD369),
             fontWeight: FontWeight.w600,
           ),
         ),
@@ -135,7 +135,7 @@ class _HomeState extends State<Home> {
                         children: [
                           IconButton(
                             onPressed: () => _update(documentSnapshot),
-                            icon: Icon(Icons.edit_note_rounded),
+                            icon: const Icon(Icons.edit_note_rounded),
                           ),
                           IconButton(
                               icon: const Icon(Icons.delete_forever_rounded),
@@ -154,8 +154,9 @@ class _HomeState extends State<Home> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-          child: Icon(Icons.add_task_rounded, color: Color(0xFFFFD369)),
-          backgroundColor: Color(0xFF222831),
+          // ignore: sort_child_properties_last
+          child: const Icon(Icons.add_task_rounded, color: Color(0xFFFFD369)),
+          backgroundColor: const Color(0xFF222831),
           onPressed: () {
             Get.toNamed(RouteName.addTodo);
           }),

@@ -21,43 +21,39 @@ class _AddTodoState extends State<AddTodo> {
     CollectionReference task = firestore.collection('task');
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xFF222831),
+        backgroundColor: const Color(0xFF222831),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_rounded, color: Color(0xFFFFD369)),
+          icon: const Icon(Icons.arrow_back_rounded, color: Color(0xFFFFD369)),
           onPressed: () => Get.toNamed(RouteName.home),
         ),
         title: Text(
           "Add Task",
           style: GoogleFonts.poppins(
-            color: Color(0xFFFFD369),
+            color: const Color(0xFFFFD369),
             fontWeight: FontWeight.w600,
           ),
         ),
       ),
       body: Container(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           children: [
-            Container(
-              child: TextFormField(
-                controller: _titleController,
-                decoration: InputDecoration(
-                  labelText: "Enter Title",
-                  labelStyle: GoogleFonts.poppins(),
-                ),
+            TextFormField(
+              controller: _titleController,
+              decoration: InputDecoration(
+                labelText: "Enter Title",
+                labelStyle: GoogleFonts.poppins(),
               ),
             ),
-            SizedBox(height: 10),
-            Container(
-              child: TextFormField(
-                controller: _descController,
-                decoration: InputDecoration(
-                  labelText: "Enter Description",
-                  labelStyle: GoogleFonts.poppins(),
-                ),
+            const SizedBox(height: 10),
+            TextFormField(
+              controller: _descController,
+              decoration: InputDecoration(
+                labelText: "Enter Description",
+                labelStyle: GoogleFonts.poppins(),
               ),
             ),
-            SizedBox(height: 50),
+            const SizedBox(height: 50),
             Container(
               height: 50,
               width: double.infinity,
